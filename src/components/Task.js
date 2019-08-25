@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './Task.css';
+import PropTypes from 'prop-types'
+
+
 class Task extends Component{
 
     styleCompleted() {
@@ -20,21 +23,26 @@ class Task extends Component{
                 { task.done } - 
                 { task.id } 
                 <input type="checkbox"></input>
-                <button style= {this.btnDelete}>
+                <button style= {btnDelete}>
                     x
                 </button>
        </div>
     }
+}
 
-    btnDelete = {
-        fontSize:'18px',
-        background: '#ea2027',
-        color: '#fff',
-        border: 'none',
-        padding: '10px 15px',
-        borderRadius: '50%',
-        cursor:'pointer'
-    }
+// De esta manera voy a especificar los tipos de datos de las propiedades
+Task.propTypes = {
+    task: PropTypes.object.isRequired
+}
+
+const btnDelete = {
+    fontSize:'18px',
+    background: '#ea2027',
+    color: '#fff',
+    border: 'none',
+    padding: '10px 15px',
+    borderRadius: '50%',
+    cursor:'pointer'
 }
 
 export default Task;
