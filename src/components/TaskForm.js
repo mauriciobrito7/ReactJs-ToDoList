@@ -8,7 +8,7 @@ class TaskForm extends Component{
     }
     
     onSubmit = event => {
-        console.log(this.state)
+        this.props.addTask(this.state)
         event.preventDefault() //detiene la propagación del evento
     }
 

@@ -12,10 +12,27 @@ class App extends Component{
     tasks: tasks
   }
 
+  addTask = (task) => {
+    //nuevo nodo en memoria
+    const newTask = { 
+      title: task.title,
+      description: task.description,
+      id: this.getLength()
+    }
+    this.setState({
+      tasks: [ ...this.state.tasks, newTask] //Se esta concatenando o agregando algo nuevo al arreglo que ya teniamos
+    })
+    console.log(this.getLength())
+  }
+
+  getLength = () => {
+    return this.state.tasks.length
+  }
+
   //El método render se encarga de mostrar o cargar la interfaz en el navegador
   render() {
     return <div>
-      <TaskForm/>
+      <TaskForm addTask = { this.addTask }/>
       <Tasks tasks={this.state.tasks} />
     </div>
   }
