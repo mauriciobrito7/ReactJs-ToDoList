@@ -23,7 +23,7 @@ class Task extends Component{
                 { task.done } - 
                 { task.id } 
                 <input type="checkbox"></input>
-                <button style= {btnDelete}>
+                <button style= {btnDelete} onClick = {this.props.deleteTask.bind(this, task.id)}> {/*bind para pasar para metros */}
                     x
                 </button>
        </div>

@@ -25,6 +25,17 @@ class App extends Component{
     console.log(this.getLength())
   }
 
+  deleteTask = (id) => { 
+    const newTasks = this.state.tasks.filter(task => task.id !== id) //Va devolver un nuevo arreglo sin tomar en cuenta algunos casos (como el id que le estamos pasando sea igual)
+    this.setState({
+      tasks: newTasks
+    })
+  }
+
+  checkDone = () => {
+
+  }
+
   getLength = () => {
     return this.state.tasks.length
   }
@@ -33,7 +44,7 @@ class App extends Component{
   render() {
     return <div>
       <TaskForm addTask = { this.addTask }/>
-      <Tasks tasks={this.state.tasks} />
+      <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask}/> {/*pasaremos deleteTask para llegar hasta el componente hijo Task*/}
     </div>
   }
 }

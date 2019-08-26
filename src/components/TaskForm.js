@@ -25,19 +25,19 @@ class TaskForm extends Component{
         return (
             <form onSubmit= {this.onSubmit}> {/*Para escuchar el evento submit*/}
                 <input 
-                type="text"
-                name="title"
-                placeholder="Write a task" 
-                onChange = { this.onChange } 
-                value = { this.state.title }/>
+                    type="text"
+                    name="title"
+                    placeholder="Write a task" 
+                    onChange = { this.onChange } 
+                    value = { this.state.title }/>
 
                 <br/>
                 <br/>
                 <textarea 
-                name="description"
-                placeholder="Write a description" 
-                onChange = { this.onChange } 
-                value = { this.state.description }></textarea>
+                    name="description"
+                    placeholder="Write a description" 
+                    onChange = { this.onChange } 
+                    value = { this.state.description }></textarea>
                 <button type="submit">Enviar</button>
             </form>
         )
