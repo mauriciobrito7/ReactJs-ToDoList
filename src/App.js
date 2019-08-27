@@ -32,8 +32,16 @@ class App extends Component{
     })
   }
 
-  checkDone = () => {
-
+  checkDone = id => {
+    //se almencena el nuevo arreglo
+    const newTasks  = this.state.tasks.map(task =>{
+      if (task.id === id) {
+        task.done = !task.done
+      }
+      return task
+    })
+    // actualizamos el estados con el nuevo arreglo
+    this.setState({tasks: newTasks})
   }
 
   getLength = () => {
@@ -44,7 +52,7 @@ class App extends Component{
   render() {
     return <div>
       <TaskForm addTask = { this.addTask }/>
-      <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask}/> {/*pasaremos deleteTask para llegar hasta el componente hijo Task*/}
+      <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask} checkDone={this.checkDone}/> {/*pasaremos deleteTask para llegar hasta el componente hijo Task*/}
     </div>
   }
 }
