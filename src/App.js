@@ -5,6 +5,7 @@ import tasks from './sample/task.json';
 //Componentes
 import Tasks from './components/Tasks';
 import TaskForm from './components/TaskForm';
+import Posts from './components/Posts';
 
 class App extends Component{
   /** Un estado lo que hace es definir los datos que pertenecen a un componente */
@@ -52,7 +53,11 @@ class App extends Component{
   render() {
     return <div>
       <TaskForm addTask = { this.addTask }/>
-      <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask} checkDone={this.checkDone}/> {/*pasaremos deleteTask para llegar hasta el componente hijo Task*/}
+      <Tasks 
+        tasks={this.state.tasks} 
+        deleteTask={this.deleteTask} 
+        checkDone={this.checkDone}/> {/*pasaremos deleteTask para llegar hasta el componente hijo Task*/}
+      <Posts/>
     </div>
   }
 }
