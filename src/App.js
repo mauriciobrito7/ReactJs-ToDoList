@@ -1,5 +1,7 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
+
 
 import tasks from './sample/task.json';
 //Componentes
@@ -52,12 +54,24 @@ class App extends Component{
   //El método render se encarga de mostrar o cargar la interfaz en el navegador
   render() {
     return <div>
-      <TaskForm addTask = { this.addTask }/>
-      <Tasks 
-        tasks={this.state.tasks} 
-        deleteTask={this.deleteTask} 
-        checkDone={this.checkDone}/> {/*pasaremos deleteTask para llegar hasta el componente hijo Task*/}
-      <Posts/>
+      <Router>
+        <Link to="/">Home</Link>
+        <br/>
+        <Link to="/posts">Post</Link>
+        <Route exact path="/" render={() => {
+          return <div>
+            <TaskForm addTask = { this.addTask }/>
+            <Tasks 
+              tasks={this.state.tasks} 
+              deleteTask={this.deleteTask} 
+              checkDone={this.checkDone}/> {/*pasaremos deleteTask para llegar hasta el componente hijo Task*/}
+          </div>
+        }}>
+
+        </Route> {/*Este componente Route nos va a permitir a crear una ruta en nuestro navegador */}
+        <Route path="/posts" component={Posts} />
+
+      </Router>
     </div>
   }
 }
